@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div ng-class="{true:'',false:'disabled'}[loginuser[0].username=='']">  
+          <label>Username: </label>
+          <input type="text" ng-model="user.name"/>
+          <label>Password: </label>
+          <input type="password" ng-model="user.pass"/>
+          <button class="btn btn-success" ng-click="login()" >Submit</button>
+        </div>
+        <div ng-class="{true:'disabled',false:''}[loginuser[0].username=='']">
+          <p>Welcome {{loginuser[0].username}}!</p>
+          <input type="button" ng-click="logout()" value="Logout" name="Logout"/>
+        </div>
+      <div class="span10">
+        <table class="table table-striped table-bordered table-hover"> <!-- ng-class="{true:'disabled',false:'bet_table'}[answer[0].contains=='no']">-->
+          <thead>
+            <th>Names</th>
+            <th>Points</th>
+          </thead>
+          <tr ng-repeat="leader in leaderboard | orderBy:orderProp:true" class="betrow">
+            <td>{{leader.name}}</td>
+            <td>{{leader.points}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>

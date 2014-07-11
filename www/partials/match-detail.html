@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div ng-class="{true:'',false:'disabled'}[loginuser[0].username=='']">  
+          <label>Username: </label>
+          <input type="text" ng-model="user.name"/>
+          <label>Password: </label>
+          <input type="password" ng-model="user.pass"/>
+          <button class="btn btn-success" ng-click="login()" >Submit</button>
+        </div>
+        <div ng-class="{true:'disabled',false:''}[loginuser[0].username=='']">
+          <p>Welcome {{loginuser[0].username}}!</p>
+          <input type="button" ng-click="logout()" value="Logout" name="Logout"/>
+          <div ng-class="{true:'disabled',false:''}[answer[0].contains=='yes']">
+          <div class="user" >
+            <label name="name">Your Name</label>
+            <label name="username">{{loginuser[0].username}}</label>
+            <!--<input type="text" class="form_control" name="username" value="{{loginuser[0].username}}" ng-model="user.name"/>-->
+          </div>
+          
+          <div class="user" >
+            <label name="bet" >Your Side</label>
+            <select ng-model="user.team" class="form-control" >
+              <option value="{{match.team1}}">{{match.team1}}</option>
+              <option value="{{match.team2}}">{{match.team2}}</option>
+              <option value="Draw">Draw</option>
+            </select>
+          </div>
+          <div class="user" >
+            <label name="bet">{{match.team1}} score</label>
+            <input type="text" class="form_control" name="team1score" ng-model="user.team1_score"/>
+          </div>
+          <div class="user" >
+            <label name="bet">{{match.team2}} score</label>
+            <input type="text" class="form_control" name="team2score" ng-model="user.team2_score"/>
+          </div>
+          <div class="buser" >
+            <button class="btn btn-success" ng-click="save()">
+              Place Bet
+            </button>
+          </div>
+        </div>
+        </div>
+      <div class="span10">
+        <table name="table_matches" class="table table-striped">
+          <tr class="success">
+            <td class="table_column">
+              <p>
+                {{match.date}} - {{match.time}}<br>
+                <b>{{match.group}}</b><br>
+                {{match.place}}
+              </p>
+            </td>
+            <td class="table_column">
+                 <img class="thumb1" ng-src="{{match.imageUrl1}}">
+            </td>
+            <td class="table_column">
+               <p class="p_display">{{match.team1}} vs {{match.team2}}</p>
+            </td>
+            <td>
+              <img class="thumb2" ng-src="{{match.imageUrl2}}">
+            </td>
+          </tr>
+        </table>
+        
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <th>Sl No.</th>
+            <th>Names</th>
+            <th>Team</th>
+            <th>{{match.team1}} Score</th>
+            <th>{{match.team2}} Score</th>
+          </thead>
+          <tr ng-repeat="bet in bets" class="betrow">
+            <td>{{bet.id}}</td>
+            <td>{{bet.name}}</td>
+            <td>{{bet.team}}</td>
+            <td>{{bet.team1_score}}</td>
+            <td>{{bet.team2_score}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>

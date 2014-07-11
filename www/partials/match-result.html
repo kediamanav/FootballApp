@@ -1,0 +1,98 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div ng-class="{true:'',false:'disabled'}[loginuser[0].username=='']">  
+          <label>Username: </label>
+          <input type="text" ng-model="user.name"/>
+          <label>Password: </label>
+          <input type="password" ng-model="user.pass"/>
+          <button class="btn btn-success" ng-click="login()" >Submit</button>
+        </div>
+        <div ng-class="{true:'disabled',false:''}[loginuser[0].username=='']">
+          <p>Welcome {{loginuser[0].username}}!</p>
+          <input type="button" ng-click="logout()" value="Logout" name="Logout"/>
+          <div ng-class="{true:'disabled',false:''}[answer[0].contains=='yes']">
+          <div class="user" >
+            <label name="name">Your Name</label>
+            <label name="username">{{loginuser[0].username}}</label>
+          </div>
+          
+          <div class="user" >
+            <label name="bet">Winning Side</label>
+            <select class="form-control" ng-model="user.team">
+              <option value="{{match.team1}}">{{match.team1}}</option>
+              <option value="{{match.team2}}">{{match.team2}}</option>
+              <option value="Draw">Draw</option>
+            </select>
+          </div>
+          <div class="user" >
+            <label name="bet">{{match.team1}} score</label>
+            <input type="text" name="team1score" ng-model="user.team1_score"/>
+          </div>
+          <div class="user" >
+            <label name="bet">{{match.team2}} score</label>
+            <input type="text" name="team2score" ng-model="user.team2_score"/>
+          </div>
+          <div class="buser" >
+            <button ng-click="save()" class="btn btn-success" >
+              Post Result
+            </button>
+          </div>
+        </div>
+        </div>
+      <div class="span10">
+        <table name="table_matches" class="table table-striped">
+          <tr>
+            <td class="table_column">
+              <p>
+                {{match.date}} - {{match.time}}<br>
+                <b>{{match.group}}</b><br>
+                {{match.place}}
+              </p>
+            </td>
+            <td class="table_column">
+                 <img class="thumb1" ng-src="{{match.imageUrl1}}">
+            </td>
+            <td class="table_column">
+               <p class="p_display">{{match.team1}} vs {{match.team2}}</p>
+            </td>
+            <td>
+              <img class="thumb2" ng-src="{{match.imageUrl2}}">
+            </td>
+          </tr>
+        </table>
+        
+
+        <div ng-class="{true:'disabled',false:''}[answer[0].contains=='no']">
+          <div class="result_div" >
+            <label name="name">User that entered the result : {{stats[0].name}}</label>
+          </div>          
+          <div class="result_div" >
+            <label name="bet">Winning Side: {{stats[0].team}}</label>
+          </div>
+          <div class="result_div" >
+            <label name="bet">{{match.team1}} score : {{stats[0].team1_score}} </label>
+          </div>
+          <div class="result_div" >
+            <label name="bet">{{match.team2}} score : {{stats[0].team2_score}} </label>
+          </div>
+        </div>
+
+        <table class="table table-striped table-bordered table-hover"> <!-- ng-class="{true:'disabled',false:'bet_table'}[answer[0].contains=='no']">-->
+          <thead>
+            <th>Names</th>
+            <th>Team</th>
+            <th>{{match.team1}} Score</th>
+            <th>{{match.team2}} Score</th>
+            <th>Points</th>
+          </thead>
+          <tr ng-repeat="result in results | orderBy:orderProp:true" class="betrow">
+            <td>{{result.name}}</td>
+            <td>{{result.team}}</td>
+            <td>{{result.team1_score}}</td>
+            <td>{{result.team2_score}}</td>
+            <td>{{result.points}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,89 @@
+/* app css stylesheet */
+
+body {
+  padding-top: 20px;
+}
+
+.spanleft{
+  width: 100px;
+  float: left;
+}
+
+.spanright{
+  width:100px;
+  float:left;
+}
+
+.mainbody{
+  margin: auto;
+  float:left;
+
+}
+
+.matches {
+  padding:20px;
+  border: 10px;
+  border-color: #E6E6FA;
+  background-color:#E6E6FA;
+}
+
+.p_display{
+  margin-left: 150px;
+}
+
+.thumb1 {
+  height: 50px;
+  width: 80px;
+  margin-left: 50px;
+}
+
+.thumb2 {
+  height: 50px;
+  width: 80px;
+  margin-left: 10px;
+}
+
+.table_column{
+  text-align: center;
+  padding:20px;
+}
+
+.user{
+  position: relative;
+  display:inline-block;
+  padding: 20px;
+
+}
+
+.result_div{
+  position: relative;
+  display:inline-block;
+  text-align: center;
+  padding: 20px;
+  padding-left: 100px;
+}
+
+.result_div label{
+  font: 20px;
+  font-family: sans-serif;
+
+}
+
+.bet_table{
+  width: 600px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.buser{
+  position: relative;
+  display:inline-block;
+}
+
+a{
+  text-decoration: none;
+}
+
+.disabled{
+  display: none;
+}

@@ -1,0 +1,98 @@
+ <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span10">
+        <!--Body content-->
+        <a href="/leaderboards">
+            Leaderboards
+        </a>
+		
+        <div ng-class="{true:'',false:'disabled'}[loginuser[0].username=='']">  
+          <label>Username: </label>
+          <input type="text" ng-model="user.name"/>
+          <label>Password: </label>
+          <input type="password" ng-model="user.pass"/>
+          <button class="btn btn-success" ng-click="login()" >Submit</button>
+        </div>
+        <div ng-class="{true:'disabled',false:''}[loginuser[0].username=='']">
+          <p>Welcome {{loginuser[0].username}}!</p>
+          <input type="button" ng-click="logout()" value="Logout" name="Logout"/>
+        </div>
+		<div class="mainbody">
+			<div class="spanright">
+				<table class="table table-striped table-bordered table-hover"> 
+				  <thead>
+					<th>Names</th>
+					<th>Points</th>
+				  </thead>
+				  <tr ng-repeat="leader in leaderboard | orderBy:orderProp:true" class="betrow">
+					<td>{{leader.name}}</td>
+					<td>{{leader.points}}</td>
+				  </tr>
+				</table>
+			</div>
+			<div class="spanleft">
+				<h3> Upcoming Matches</h3>
+				<table name="table_matches" class="table table-striped table-hover table-border">
+				  <tr ng-repeat="match in matches"   ng-if="match.finished!=1">
+					<td class="table_column">
+					  <p>
+						{{match.date}} - {{match.time}}<br>
+						<b>{{match.group}}</b><br>
+						{{match.place}}
+					  </p>
+					</td>
+					<td class="table_column">
+					  <img class="thumb1" ng-src="{{match.imageUrl1}}">
+					</td>
+					<td class="table_column">
+					   <p class="p_display">{{match.team1}} vs {{match.team2}}</p>
+					</td>
+					<td>
+					  <img class="thumb2" ng-src="{{match.imageUrl2}}">
+					</td>
+					<td class="table_column">
+					  <a href="/matches/{{match.id}}">
+						<input type="button" class="btn btn-primary" value="Place/View Bets" name="bets"/>
+					  </a>
+					  <a href="/matches/results/{{match.id}}">
+						<input type="button" class="btn btn-primary" value="View Results" name="results"/>
+					  </a>
+					</td>
+				  </tr>
+				</table>
+				<div> <!-- ng-class="{true:'disabled',false:''}[matches.length>0]">-->
+				  <h3>Finished Matches</h3>
+				  <table name="table_matches" class="table table-striped table-hover table-border">
+					<tr ng-repeat="match in matches" ng-if="match.finished==1">
+					  <td class="table_column">
+						<p>
+						  {{match.date}} - {{match.time}}<br>
+						  <b>{{match.group}}</b><br>
+						  {{match.place}}
+						</p>
+					  </td>
+					  <td class="table_column">
+						<img class="thumb1" ng-src="{{match.imageUrl1}}">
+					  </td>
+					  <td class="table_column">
+						 <p class="p_display">{{match.team1}} vs {{match.team2}}</p>
+					  </td>
+					  <td>
+						<img class="thumb2" ng-src="{{match.imageUrl2}}">
+					  </td>
+					  <td class="table_column">
+						<a href="/matches/{{match.id}}">
+						  <input type="button" class="btn btn-primary" value="Place/View Bets" name="bets"/>
+						</a>
+						<a href="/matches/results/{{match.id}}">
+						  <input type="button" class="btn btn-primary" value="View Results" name="results"/>
+						</a>
+					  </td>
+					</tr>
+				  </table>
+				</div>
+			</div>
+		</div>
+      </div>
+    </div>
+  </div>

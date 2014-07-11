@@ -1,0 +1,11 @@
+{
+        "date": "12 June, 2014",
+	"id": "match-1",
+        "time": "17:00 Local Time", 
+	"group": "GROUP A",
+	"place": "Arena de Sao Paulo",
+        "imageUrl1": "img/matches/brazil.png", 
+        "imageUrl2": "img/matches/croatia.png", 
+        "team1": "Brazil", 
+        "team2": "Croatia"
+}
