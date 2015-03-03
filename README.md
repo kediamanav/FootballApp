@@ -1,7 +1,7 @@
 FootballApp
 ===========
 
-Football Application using Eiffel+AngulasJS
+Football Application using Eiffel+AngulasJS, using REST API provided by the Eiffel Web Server
 
 Compile the finalized version using Nino as the target.
 The application is running at port 9090.
